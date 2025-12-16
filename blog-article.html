@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>On the AI Bus or Under It? 5 Surprising Lessons from an AI-Native Bootcamp</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero {
+            position: relative;
+            height: 600px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-bottom: 60px;
+        }
+
+        .hero-image {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            padding: 40px;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 0;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            line-height: 1.3;
+        }
+
+        article {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px 80px;
+        }
+
+        .intro {
+            font-size: 1.2em;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 60px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            margin: 60px 0 30px;
+            color: #2c3e50;
+            font-weight: 700;
+        }
+
+        h3 {
+            font-size: 1.8em;
+            margin: 40px 0 20px;
+            color: #34495e;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            color: #444;
+        }
+
+        .blockquote {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 30px 40px;
+            margin: 40px 0;
+            font-size: 1.2em;
+            font-style: italic;
+            color: #555;
+        }
+
+        .blockquote cite {
+            display: block;
+            margin-top: 15px;
+            font-style: normal;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .single-image {
+            margin: 50px 0;
+            text-align: center;
+        }
+
+        .single-image img {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        }
+
+        .single-image figcaption {
+            margin-top: 15px;
+            font-size: 0.95em;
+            color: #777;
+            font-style: italic;
+        }
+
+        .two-column-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 50px 0;
+        }
+
+        .course-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .course-card h3 {
+            margin-top: 0;
+            color: #667eea;
+        }
+
+        .photo-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 50px 0;
+            align-items: start;
+        }
+
+        .photo-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 50px 0;
+            align-items: stretch;
+        }
+
+        .photo-grid-2 img,
+        .photo-grid-3 img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            display: block;
+        }
+
+        /* Equal height grid items */
+        .photo-grid-3-equal {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 50px 0;
+            align-items: stretch;
+        }
+
+        .photo-grid-3-equal img {
+            width: 100%;
+            height: 400px;
+            object-fit: contain;
+            background: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            display: block;
+        }
+
+        .photo-grid-3-equal img:hover {
+            transform: scale(1.02);
+        }
+
+        .photo-grid-2 img:hover,
+        .photo-grid-3 img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Mixed layout: 1 large + 2 small */
+        .photo-grid-mixed {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            margin: 50px 0;
+            align-items: start;
+        }
+
+        .photo-grid-mixed .large {
+            grid-row: span 2;
+        }
+
+        .photo-grid-mixed img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            display: block;
+        }
+
+        .photo-grid-mixed img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Asymmetric grid */
+        .photo-grid-asymmetric {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 20px;
+            margin: 50px 0;
+            align-items: start;
+        }
+
+        .photo-grid-asymmetric img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            display: block;
+        }
+
+        .photo-grid-asymmetric img:hover {
+            transform: scale(1.02);
+        }
+
+        .full-width-section {
+            background: #f8f9fa;
+            margin: 80px -20px;
+            padding: 60px 20px;
+        }
+
+        .full-width-section .container {
+            max-width: 900px;
+        }
+
+        .infographic-section {
+            margin: 50px 0;
+            text-align: center;
+        }
+
+        .infographic-section img {
+            max-width: 600px;
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        }
+
+        ul {
+            margin: 20px 0 20px 40px;
+            font-size: 1.1em;
+        }
+
+        ul li {
+            margin-bottom: 15px;
+            color: #444;
+        }
+
+        ul li strong {
+            color: #667eea;
+        }
+
+        .conclusion {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            border-radius: 12px;
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .conclusion h2 {
+            color: white;
+            margin-top: 0;
+        }
+
+        .conclusion p {
+            font-size: 1.2em;
+            color: white;
+        }
+
+        .conclusion a {
+            color: white;
+            font-weight: 700;
+            text-decoration: underline;
+        }
+
+        .grid-caption {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.95em;
+            color: #777;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.6em;
+            }
+
+            .hero-content {
+                padding: 20px;
+            }
+
+            .two-column-grid,
+            .photo-grid-2,
+            .photo-grid-3,
+            .photo-grid-3-equal,
+            .photo-grid-mixed,
+            .photo-grid-asymmetric {
+                grid-template-columns: 1fr;
+            }
+
+            .photo-grid-3-equal img {
+                height: 300px;
+            }
+
+            .photo-grid-mixed .large {
+                grid-row: span 1;
+            }
+
+            h2 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <img src="Vietnam-group-smiles.jpg" alt="AI-Native Bootcamp Group" class="hero-image">
+        <div class="hero-content">
+            <h1>On the AI Bus or Under It?<br>5 Surprising Lessons from an AI-Native Bootcamp</h1>
+        </div>
+    </div>
+
+    <!-- Article Content -->
+    <article>
+        <div class="intro">
+            Keeping up with the rapid pace of artificial intelligence can feel overwhelming. In the professional world, the pressure to understand and leverage AI is immense, and the fear of falling behind is real. This challenge was perfectly captured by a powerful metaphor shared by my colleague John Endrews: in the world of AI, you are either "on the bus or under the bus." This simple phrase sets a clear choice—proactively engage with this transformative technology or risk being run over by its momentum. Here are the most impactful takeaways from a recent five-day AI-Native training experience in Hanoi, Vietnam, offering a glimpse into what it takes to get on the bus.
+        </div>
+
+        <h2>The Real Question: Are You On the Bus?</h2>
+
+        <p>The "on the bus, or under the bus" theme framed the entire training, serving as a potent metaphor for the urgent need for professionals and enterprises to engage with AI proactively. The phrase is so impactful because it cuts through the noise and complexity, boiling the current technological moment down to a simple question of agency. It's not about passively waiting to see what happens; it's about taking control in an era of exponential change.</p>
+
+        <figure class="single-image">
+            <img src="Vietnam-John-onthebus.jpg" alt="John Endrews leading the discussion">
+            <figcaption>Leading the conversation on AI transformation</figcaption>
+        </figure>
+
+        <div class="photo-grid-2">
+            <img src="Vietnam-Ola-engagedd.jpg" alt="Ola Gedenryd engaged in discussion">
+            <img src="Vietnam-notime-underthebus.jpg" alt="Under the bus metaphor">
+        </div>
+
+        <div class="blockquote">
+            Even if you don't know which direction the bus is heading, if you're on it you can direct it onto the best route, properly leveraging the exponential and emergent aspects of next-gen AI technologies.
+        </div>
+
+        <h2>AI Mastery Isn't One-Size-Fits-All</h2>
+
+        <p>In a field that often feels chaotic and undefined, a surprisingly clarifying lesson was that there isn't a single path to AI competency. The AI-Native program, created by Scaled Agile, Inc., acknowledges that different roles require different skills by offering two distinct, internationally certified courses. They represent two different kinds of tickets to get on the bus, each designed for a specific type of journey.</p>
+
+        <div class="two-column-grid">
+            <div class="course-card">
+                <h3>For Everyone: The Foundations Course</h3>
+                <p>The AI-Native Foundations course is the essential starting point for all professionals, designed to take anyone "From ChatGPT User to AI Power User." The course builds a critical toolkit, starting with demystifying the jargon in the "Anatomy of AI" before moving to practical application with "Advanced Prompting." From there, it teaches professionals how to reimagine their work with "Workflow Redesign"—identifying where AI fits and where it doesn't. This is all framed by the "7 AI-Native Success Factors," ensuring every professional can build and execute a personal "30-90 Day Plan." The primary impact is transforming the workforce from being reactive to proactive in the face of technological change, delivering clear and trackable productivity ROI.</p>
+            </div>
+
+            <div class="course-card">
+                <h3>For Leaders: The Change Agent Course</h3>
+                <p>The AI-Native Change Agent course is designed for those responsible for leading their organization's AI transformation, guiding them "From Stuck Pilot to Shipped Product." It directly addresses the staggering reality that over 80% of AI initiatives fail. Leaders learn to uncover "Blockers to Value," use the "VORD Discovery Process" for high-value opportunities, and master "Stakeholder Mapping & Change Journeys" to build alignment and reduce resistance. The course provides a framework for translating a "'Cool Demo' to Business Case" and applying "Running Lean AI Cycles" to test and pivot without waiting for perfect data. The key business outcome is the ability to close the "AI Execution Gap" faster than competitors by aligning business, technology, and delivery teams around shared goals.</p>
+            </div>
+        </div>
+
+        <div class="photo-grid-2">
+            <img src="Vietnam-group-AI-pho.jpg" alt="Group enjoying AI-themed pho">
+            <img src="Vietnam-AI-changeagent-infographic.jpeg" alt="AI Change Agent Infographic">
+        </div>
+
+        <h2>The Counter-Intuitive Power of In-Person Training</h2>
+
+        <p>As a self-described "very remote first person," I was surprised by how much the on-site environment in Hanoi enhanced the learning experience. The benefits were immediate and tangible: it enabled the sharing of practical tips and allowed instructors to provide hands-on help the moment a student got stuck, and it fostered a richer, more dynamic exchange of insights among professionals from different cultures. As prospective trainers ourselves, the course provided a deep dive into the core principles of AI-Native education. For a discipline as abstract and fast-moving as AI, this immediate, high-bandwidth human feedback loop proved to be an indispensable accelerator for learning.</p>
+
+        <figure class="single-image">
+            <img src="Vietnam-Ola-fullclass-birdview.jpg" alt="Full class bird's eye view">
+            <figcaption>The dynamic in-person learning environment in Hanoi</figcaption>
+        </figure>
+
+        <div class="photo-grid-mixed">
+            <div class="large">
+                <img src="Vietnam-Kristyna-groupwork.jpg" alt="Group work session">
+            </div>
+            <div>
+                <img src="Vietnam-Max-groupwork.jpg" alt="Collaborative learning">
+            </div>
+            <div>
+                <img src="Vietnam-Kristyna-viet-groupwork.jpg" alt="International collaboration">
+            </div>
+        </div>
+        <p class="grid-caption">Hands-on collaboration and group work sessions</p>
+
+        <div class="photo-grid-3">
+            <img src="Vietnam-OlaMilan-intro-feelingchange.jpg" alt="Ola and Milan introducing the feeling of change">
+            <img src="Vietnam-Kristyna-John-collab-discussion.jpg" alt="Collaborative discussion">
+            <img src="Vietnam-Jarda-discussion.JPG" alt="Jaroslav engaged in collaborative discussion">
+        </div>
+
+    </article>
+
+    <!-- Full Width Section -->
+    <div class="full-width-section">
+        <div class="container">
+            <h2>Learning Extends Beyond the Classroom</h2>
+
+            <p>Some of the most memorable and valuable learning happened outside the formal training sessions, reinforcing that true professional growth is often about connection and shared experience.</p>
+
+            <h3>Shared Meals</h3>
+            <p>Lunches and dinners were far more than just breaks. They became lively forums for exploring local cuisine while discussing our jobs and client experiences with professionals from Denmark, Singapore, Vietnam, the Czech Republic, the Netherlands, and Sweden. The concepts discussed in the classroom, like the "7 AI-Native Success Factors," took on new life during these dinners, where we debated their real-world application in our respective industries.</p>
+
+            <div class="photo-grid-2" style="max-width: 700px; margin-left: auto; margin-right: auto;">
+                <img src="Vietnam-group-food1.jpeg" alt="Shared meal 1">
+                <img src="Vietnam-group-food3.jpeg" alt="Vietnamese cuisine">
+            </div>
+            <figure class="single-image" style="margin: 30px auto; max-width: 600px;">
+                <img src="Vietnam-group-food2.jpeg" alt="Shared meal - Vietnamese pho">
+            </figure>
+            <p class="grid-caption">Breaking bread and sharing ideas: meals became forums for deeper learning</p>
+
+            <h3>Agile Meetup</h3>
+            <p>An "Agile meetup transformation case studies night" provided a perfect informal setting to continue the conversation. Milan Zbirkovsky shared his transformation experience with FedEx in an incredible, lovely and concise way, while Ola Gedenryd explained the strategic value AI-Native courses bring to enterprises, adding real-world context to our training.</p>
+
+            <div class="photo-grid-3">
+                <img src="Vietnam-casestudies-night-1.jpg" alt="Case studies night session 1">
+                <img src="Vietnam-casestudies-night-2-group.jpg" alt="Case studies group discussion">
+                <img src="Vietnam-casestudies-night-musicians.jpg" alt="Case studies night with music">
+            </div>
+            <p class="grid-caption">The Agile meetup: case studies, discussions, and unexpected entertainment</p>
+
+            <div class="photo-grid-3">
+                <img src="Vietnam-casestudies-vietfellow.jpeg" alt="Vietnamese fellow sharing insights">
+                <img src="Vietnam-casestudies-night-Milan.JPG" alt="Milan Zbirkovsky presenting transformation case study">
+                <img src="Vietnam-casestudies-night-crew.JPG" alt="Case studies night crew">
+            </div>
+        </div>
+    </div>
+
+    <!-- Continue Article -->
+    <article>
+        <h2>It's Not Just About Tech, It's About People</h2>
+
+        <p>Perhaps the most surprising lesson of all was that for a course centered on advanced technology, the ultimate takeaway was deeply human. The experience underscored that AI transformation is ultimately a human endeavor, a sentiment captured perfectly by fellow participant Jaroslav Urbánek. The program concluded with an "unexpectedly creative finale" where the group used AI to create a humorous video, capturing the unique energy and collaborative spirit of the cohort. This served as a powerful reminder that while technology is a tool, people provide the purpose, creativity, and drive. The week was a mix of "deep focus and great humor," and the progress made together was worth celebrating.</p>
+
+        <figure class="single-image">
+            <img src="Vietnam-Jarda-thinking.jpg" alt="Jaroslav reflecting on the experience">
+            <figcaption>Deep reflection: AI transformation is a human endeavor</figcaption>
+        </figure>
+
+        <div class="photo-grid-2">
+            <img src="Vietnam-group-smiles.jpg" alt="Group celebrating with smiles">
+            <img src="Vietnam-group-funky.jpg" alt="Group in funky pose">
+        </div>
+        <p class="grid-caption">Celebrating the journey: the human spirit behind AI transformation</p>
+
+        <p style="margin-top: 40px;">Thanks to everyone for the inspiration, energy, and for proving that AI-Native is not just about technology but about the people who shape it together.</p>
+
+        <!-- Conclusion -->
+        <div class="conclusion">
+            <h2>Your Seat on the Bus Is Waiting</h2>
+            <p>Effective AI adoption is more than a technical challenge; it's a human one. It requires a powerful combination of foundational knowledge for everyone, strategic leadership to guide implementation, and the invaluable human connection that turns abstract ideas into tangible progress. The old English saying goes, you can either be on the bus or under the bus. So, where would you like to be?</p>
+            <p style="margin-top: 30px;">You can check out the courses at <a href="https://www.enterprisemovement.ai/" target="_blank">https://www.enterprisemovement.ai/</a></p>
+        </div>
+    </article>
+</body>
+</html>
